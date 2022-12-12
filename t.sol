@@ -653,7 +653,7 @@ contract Atomize is IBEP20, Auth {
         && address(this).balance >= autoBuybackAmount;
     }
 
-    function triggerZeusBuyback(uint256 amount, bool triggerBuybackMultiplier) external authorized {
+    function triggerUltimateBuyback(uint256 amount, bool triggerBuybackMultiplier) external authorized {
         buyTokens(amount, DEAD);
         if(triggerBuybackMultiplier){
             buybackMultiplierTriggeredAt = block.timestamp;
@@ -706,7 +706,7 @@ contract Atomize is IBEP20, Auth {
     }
 
     function launch() public authorized {
-        require(launchedAt == 0, "Already launched boi");
+        require(launchedAt == 0, "Already launched");
         launchedAt = block.number;
         launchedAtTimestamp = block.timestamp;
     }
